@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @case.name %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%= @case.public %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @case.active %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= company_name @case %>
+</p>
+
+
+<%= link_to 'Edit', edit_case_path(@case) %> |
+<%= link_to 'Back', cases_path %>
