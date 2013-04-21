@@ -1,6 +1,7 @@
 Crm::Application.routes.draw do
   resources :cases
 
+  resources :companies
 
   resources :contacts
 
