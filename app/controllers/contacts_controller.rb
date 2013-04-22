@@ -40,6 +40,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
+    match_company!
     @contact = Contact.new(params[:contact])
 
     respond_to do |format|
@@ -56,11 +57,12 @@ class ContactsController < ApplicationController
   # PUT /contacts/1
   # PUT /contacts/1.json
   def update
+    match_company!
     @contact = Contact.find(params[:id])
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+        format.html { redirect_to @contact, notice: "Contact was successfully updated. #{@contact.company_id}" }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,5 +81,11 @@ class ContactsController < ApplicationController
       format.html { redirect_to contacts_url }
       format.json { head :no_content }
     end
+  end
+
+private
+  def match_company!
+    company = Company.find_or_create_company!(params[:contact][:employer]).id unless params[:contact][:employer].empty?
+    params[:contact][:company_id] = company ? company : nil
   end
 end

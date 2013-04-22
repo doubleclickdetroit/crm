@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :employer %><br />
-    <%= collection_select :contact, :company_id, Company.all, :id, :name %>
+    <%= f.text_field :employer, value: company_name(@contact) %>
   </div>
   <div class="field">
     <%= f.label :phone %><br />
