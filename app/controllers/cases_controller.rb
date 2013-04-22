@@ -40,6 +40,7 @@ class CasesController < ApplicationController
   # POST /cases
   # POST /cases.json
   def create
+    match_business!
     @case = Case.new(params[:case])
 
     respond_to do |format|
@@ -56,6 +57,7 @@ class CasesController < ApplicationController
   # PUT /cases/1
   # PUT /cases/1.json
   def update
+    match_business!
     @case = Case.find(params[:id])
 
     respond_to do |format|
@@ -79,5 +81,11 @@ class CasesController < ApplicationController
       format.html { redirect_to cases_url }
       format.json { head :no_content }
     end
+  end
+
+private
+  def match_business!
+    business = Company.find_or_create_company!(params[:case][:business]).id unless params[:case][:business].empty?
+    params[:case][:company_id] = business ? business : nil
   end
 end

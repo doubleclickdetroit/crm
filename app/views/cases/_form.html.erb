@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :company_id %><br />
-    <%= collection_select :case, :company_id, Company.all, :id, :name %>
+    <%= f.text_field :business, value: company_name(@case) %>
   </div>
   <div class="actions">
     <%= f.submit %>

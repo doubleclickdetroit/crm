@@ -1,5 +1,6 @@
 class Case < ActiveRecord::Base
-  attr_accessible :active, :company_id, :name, :public
+  attr_accessible :active, :business, :company_id, :name, :public
+  attr_accessor :business
 
   belongs_to :company
 
