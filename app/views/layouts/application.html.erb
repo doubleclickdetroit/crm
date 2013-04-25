@@ -9,6 +9,16 @@
 </head>
 <body>
 
+  <header>
+    <nav>
+      <ul class="menu">
+        <li class="current"><%= link_to 'CRM', root_path %></li>
+        <li class="pull-right"><%= link_to 'Add Case', new_case_path %></li>
+        <li class="pull-right"><%= link_to 'Add Contact', new_contact_path %></li>
+      </ul>
+    </nav>
+  </header>
+
   <div class="grid">
     <div class="col_3">
         <%= render 'common/nav' %>
