@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130421152651) do
+ActiveRecord::Schema.define(:version => 20130424215219) do
 
   create_table "cases", :force => true do |t|
     t.string   "name"
@@ -49,5 +49,21 @@ ActiveRecord::Schema.define(:version => 20130421152651) do
   end
 
   add_index "contacts", ["company_id"], :name => "index_contacts_on_company_id"
+
+  create_table "notes", :force => true do |t|
+    t.text     "body"
+    t.integer  "case_id"
+    t.integer  "user_id"
+    t.integer  "deal_id"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.datetime "occurance",  :default => '2013-04-24 04:00:00', :null => false
+    t.integer  "company_id"
+    t.integer  "contact_id"
+  end
+
+  add_index "notes", ["case_id"], :name => "index_notes_on_case_id"
+  add_index "notes", ["company_id"], :name => "index_notes_on_company_id"
+  add_index "notes", ["contact_id"], :name => "index_notes_on_contact_id"
 
 end

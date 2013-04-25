@@ -1,10 +1,19 @@
 Crm::Application.routes.draw do
-  resources :cases
+  resources :cases do
+    resources :notes
+  end
 
-  resources :companies
+  resources :companies do
+    resources :notes
+  end
 
-  resources :contacts
+  resources :contacts do
+    resources :notes
+  end
 
+  resources :notes
+
+  root :to => 'welcome#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

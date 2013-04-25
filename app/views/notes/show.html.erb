@@ -1,0 +1,19 @@
+<div class="clearfix">
+  <div class="col_7">
+    <header>
+      <div class="pull-right">
+        <%= link_to 'Edit this note', edit_entity_note_path?(@note) %>
+        &nbsp;|&nbsp;
+        <%= link_to 'Delete', [@entity, @note], method: :delete, confirm: 'Are you sure you want to delete this?' %>
+      </div>
+
+      <strong>Note about <%= link_to display_title?(@entity), @entity %></strong>
+    </header>
+
+    <p><%= @note.body %></p>
+  </div>
+
+  <div class="col_4 pull-right">
+    <p>This note about...</p>
+  </div>
+</div>

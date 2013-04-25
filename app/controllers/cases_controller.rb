@@ -13,7 +13,8 @@ class CasesController < ApplicationController
   # GET /cases/1
   # GET /cases/1.json
   def show
-    @case = Case.find(params[:id])
+    @case = Case.find params[:id]
+    @note = @case.notes.build
 
     respond_to do |format|
       format.html # show.html.erb

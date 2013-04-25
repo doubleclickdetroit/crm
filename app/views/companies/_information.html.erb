@@ -1,0 +1,6 @@
+<ul class="alt ui-personal-info">
+  <%= content_tag(:li, content_tag(:i, '', class: 'icon-phone') + " #{@company.phone}") unless @company.phone.blank? %>
+  <%= content_tag(:li, content_tag(:i, '', class: 'icon-envelope') +' '+ content_tag(:a, @company.email, href: "mailto:#{@company.email}")) unless @company.email.blank? %>
+  <%= content_tag(:li, content_tag(:i, '', class: 'icon-desktop') +' '+ content_tag(:a, @company.website, href: @company.website, target: "_blank")) unless @company.website.blank? %>
+  <%= content_tag(:li, content_tag(:i, '', class: 'icon-map-marker') + " #{@company.address}") unless @company.address.blank? %>
+</ul>

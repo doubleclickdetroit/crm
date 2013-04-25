@@ -1,0 +1,7 @@
+<li>
+  <h6><%= link_to company.name, company %></h6>
+
+  <% unless company.email.nil? %>
+    <p><%= link_to company.email, "mailto:#{company.email}" %></p>
+  <% end %>
+</li>

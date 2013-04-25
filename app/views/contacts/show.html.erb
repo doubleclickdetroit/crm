@@ -1,45 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="clearfix">
+  <div class="col_7">
+    <header>
+      <h4><%= contact_full_name @contact %></h4>
+      <% unless @contact.company.nil? %>
+        <%= link_to @contact.company.name, @contact.company %>
+      <% end %>
+    </header>
 
-<p>
-  <b>First name:</b>
-  <%= @contact.first_name %>
-</p>
+    <ul class="tabs left">
+      <li><a href="#notes">Notes</a></li>
+      <li><a href="#deals">Deals</a></li>
+    </ul>
 
-<p>
-  <b>Last name:</b>
-  <%= @contact.last_name %>
-</p>
+    <div id="notes" class="tab-content">
+      <%= render 'notes/form' %>
+    </div>
 
-<p>
-  <b>Title:</b>
-  <%= @contact.title %>
-</p>
+    <div id="deals" class="tab-content">
+      <p>Deals</p>
+    </div>
+  </div>
 
-<p>
-  <b>Company:</b>
-  <%= company_name @contact %>
-</p>
+  <div class="col_4 pull-right">
+    <%= edit_button 'Edit this person', edit_contact_path(@contact) %>
 
-<p>
-  <b>Phone:</b>
-  <%= @contact.phone %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @contact.email %>
-</p>
-
-<p>
-  <b>Website:</b>
-  <%= @contact.website %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @contact.address %>
-</p>
-
-
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+    <p><strong>Personal Info</strong></p>
+    <%= render 'information' %>
+  </div>
+</div>

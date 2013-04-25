@@ -1,33 +1,45 @@
 <%= form_for(@case) do |f| %>
   <% if @case.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@case.errors.count, "error") %> prohibited this case from being saved:</h2>
-
-      <ul>
-      <% @case.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <div class="notice error">
+      <i class="icon-remove-sign icon-large"></i>&nbsp;
+      <%= pluralize(@case.errors.count, "error") %> prohibited this case from being saved
     </div>
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
-    <%= f.label :public %><br />
-    <%= f.check_box :public %>
+    <label>Who can see this case?</label><br />
+    <label><%= f.radio_button :public, true %> Everyone</label>
+    &nbsp;
+    <label><%= f.radio_button :public, false %> Just Me</label>
   </div>
+
+  <br />
+
   <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
+    <label>Who can edit this case?</label><br />
+    <label>
+      <%= f.radio_button :active, true %>
+      <strong>Public</strong> - People can add notes and edit the case
+    </label>
+    <br>
+    <label>
+      <%= f.radio_button :active, false %>
+      <strong>Closed</strong> - Nobody can add notes or make changes to the case
+    </label>
   </div>
+
+  <br />
+
   <div class="field">
-    <%= f.label :company_id %><br />
+    <%= f.label 'Associate with Company:' %><br />
     <%= f.text_field :business, value: company_name(@case) %>
   </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_add_edit_button f, @case %>
   </div>
 <% end %>

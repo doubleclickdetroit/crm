@@ -1,0 +1,30 @@
+<% note_entity! @note %>
+
+<div class="ui-notes">
+  <%= form_for [@entity, @note] do |f| %>
+    <div class="field">
+      <label class="label"><%= "Add a note about #{display_label? @entity}" %></label>
+      <% if display_instructions?(@entity) and @note.new_record? %>
+        <p>You might enter a note about a call, or a meeting, or a conversation you just had with this <%= @entity.class.to_s %>. Notes are great for keeping a history of your interactions or communications with someone.</p>
+      <% end %>
+
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="field">
+      <%= f.label 'When did it happen?' %><br />
+      <%= f.date_select :occurance, order: [:month, :day, :year] %>
+    </div>
+
+    <div class="field">
+      <%= submit_add_edit_button f, @entity %>
+    </div>
+  <% end %>
+
+
+  <% if @note.new_record? %>
+    <ul class="alt ui-notes">
+      <%= render @entity.notes %>
+    </ul>
+  <% end %>
+</div>

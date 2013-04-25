@@ -2,7 +2,9 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts  = Contact.all
+    @companies = Company.all
+    @parties = (@contacts + @companies).sort_by! &:display_name
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +15,8 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
-    @contact = Contact.find(params[:id])
+    @contact = Contact.find params[:id]
+    @note    = @contact.notes.build
 
     respond_to do |format|
       format.html # show.html.erb

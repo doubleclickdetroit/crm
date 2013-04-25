@@ -1,35 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="clearfix">
+  <div class="col_7">
+    <header>
+      <h4><%= @company.name %></h4>
+      <!-- tags -->
+    </header>
 
-<p>
-  <b>Name:</b>
-  <%= @company.name %>
-</p>
+    <ul class="tabs left">
+      <li><a href="#notes">Notes</a></li>
+      <li><a href="#people"><%= pluralize @company.contacts.count, 'Person' %></a></li>
+      <li><a href="#deals">Deals</a></li>
+    </ul>
 
-<p>
-  <b>Email:</b>
-  <%= @company.email %>
-</p>
+    <div id="notes" class="tab-content">
+      <%= render 'notes/form' %>
+    </div>
 
-<p>
-  <b>Website:</b>
-  <%= @company.website %>
-</p>
+    <div id="people" class="tab-content">
+      <ul class="alt">
+        <%= render @company.contacts %>
+      </ul>
+    </div>
 
-<p>
-  <b>Phone:</b>
-  <%= @company.phone %>
-</p>
+    <div id="deals" class="tab-content">
+      <p>Deals</p>
+    </div>
+  </div>
 
-<p>
-  <b>Address:</b>
-  <%= @company.address %>
-</p>
+  <div class="col_4 pull-right">
+    <%= edit_button 'Edit this company', edit_company_path(@company) %>
 
-<p>
-  <b>Notes:</b>
-  <%= @company.background %>
-</p>
-
-
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+    <p><strong>Company Info</strong></p>
+    <%= render 'information' %>
+  </div>
+</div>

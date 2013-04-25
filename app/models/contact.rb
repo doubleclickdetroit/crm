@@ -3,4 +3,9 @@ class Contact < ActiveRecord::Base
   attr_accessor :employer
 
   belongs_to :company
+  has_many :notes
+
+  def display_name
+    last_name
+  end
 end

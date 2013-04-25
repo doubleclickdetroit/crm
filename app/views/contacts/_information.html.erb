@@ -1,0 +1,7 @@
+<ul class="alt ui-personal-info">
+  <%= content_tag(:li, content_tag(:i, '', class: 'icon-folder-close-alt') + " #{@contact.title}") unless @contact.title.blank? %>
+  <%= content_tag(:li, content_tag(:i, '', class: 'icon-phone') + " #{@contact.phone}") unless @contact.phone.blank? %>
+  <%= content_tag(:li, content_tag(:i, '', class: 'icon-envelope') +' '+ content_tag(:a, @contact.email, href: "mailto:#{@contact.email}")) unless @contact.email.blank? %>
+  <%= content_tag(:li, content_tag(:i, '', class: 'icon-desktop') +' '+ content_tag(:a, @contact.website, href: @contact.website, target: "_blank")) unless @contact.website.blank? %>
+  <%= content_tag(:li, content_tag(:i, '', class: 'icon-map-marker') + " #{@contact.address}") unless @contact.address.blank? %>
+</ul>

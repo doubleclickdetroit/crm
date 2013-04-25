@@ -1,0 +1,18 @@
+<% unless note.id.nil? %>
+<li>
+  <%= content_tag :i, '', class: 'icon-file-alt icon-2x' %>
+  <p class="occurance">
+    <%= note.occurance.strftime "%A, %B %d" %>
+  </p>
+
+  <p class="body">
+    <%= note.body %>
+  </p>
+
+  <div class="actions">
+    <%= link_to 'Go to note', note %>
+    <%= link_to 'Edit', edit_entity_note_path?(note) %>
+    <%= link_to 'Delete', [@entity, note], confirm: 'Are you sure?', method: :delete %>
+  </div>
+</li>
+<% end %>

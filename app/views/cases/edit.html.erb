@@ -1,6 +1,9 @@
-<h1>Editing case</h1>
+<header>
+  <h6>Edit details about <%= link_to @case.name, @case %></h6>
+</header>
+
+<div class="pull-right">
+  <%= link_to "Delete this case", @case, method: :delete, confirm: "Are you sure you want to delete this case?", class: "button small red" %>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @case %> |
-<%= link_to 'Back', cases_path %>

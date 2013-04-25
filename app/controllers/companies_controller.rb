@@ -11,6 +11,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @note    = @company.notes.build
 
     respond_to do |format|
       format.html # show.html.erb

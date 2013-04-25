@@ -1,37 +1,11 @@
-<h1>Listing contacts</h1>
+<header class="clearfix">
+  <strong>Listing contacts</strong>
+  <div class="pull-right">
+    <%= add_button 'Add a New Contact', new_contact_path %>
+  </div>
+</header>
 
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Title</th>
-    <th>Company</th>
-    <th>Phone</th>
-    <th>Email</th>
-    <th>Website</th>
-    <th>Address</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @contacts.each do |contact| %>
-  <tr>
-    <td><%= contact.first_name %></td>
-    <td><%= contact.last_name %></td>
-    <td><%= contact.title %></td>
-    <td><%= company_name contact %></td>
-    <td><%= contact.phone %></td>
-    <td><%= contact.email %></td>
-    <td><%= contact.website %></td>
-    <td><%= contact.address %></td>
-    <td><%= link_to 'Show', contact %></td>
-    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Contact', new_contact_path %>
+<ul class="alt">
+  <%= render @parties %>
+</ul>
